@@ -20,7 +20,7 @@ class EmployeesTableSeeder extends Seeder
             $newEmployee->surname = $faker->lastName();
             $newEmployee->email = $faker->email();
             $newEmployee->phone = $faker->phoneNumber();
-            $newEmployee->company_id = $faker->numberBetween(1, 10);
+            $newEmployee->company_id = $faker->numberBetween(11, 20);
 
             $newEmployee->save();
         }
