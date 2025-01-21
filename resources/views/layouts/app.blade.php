@@ -42,7 +42,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link p-0" href="{{ url('/') }}"><img src="/crm_logo_transparent.png" alt="logo"></a>
                         </li>
                     </ul>
 
@@ -51,7 +51,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link fw-bold text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
