@@ -36,13 +36,42 @@ body::before {
     .container {
         height: calc(100vh - $header-height);
         color: $primary-blue;
+        h1 {
+            opacity: 0;
+            animation: fadeIn 1.3s ease-out forwards; /* Apply animation */
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        a {
+            color: $primary-blue;
+            text-decoration: none;
+            animation: fadeInLink 1.3s ease-out forwards;
+        }
+        @keyframes fadeInLink {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        a:hover {
+            transition: all 0.3s ease;
+            transform: scale(1.3);
+        }
     }
 }
 // jumbotron arrow
 .arrow {
     margin-top: 50px;
     transform: rotate(180deg);
-    cursor: pointer;
 }
 .arrow span {
     display: block;
