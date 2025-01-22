@@ -6,10 +6,13 @@ $header-height: 60px;
 $primary-blue: rgb(34, 158, 243);
 $secondary-blue: rgb(12, 76, 186);
 $secondary-blue-transparent: rgba(12, 76, 186, 0.8);
+main {
+    position: relative;
+}
 // body background
-body::before {
+main::before {
     content: "";
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;

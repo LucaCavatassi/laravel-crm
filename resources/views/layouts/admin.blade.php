@@ -30,7 +30,7 @@
       <div class="container-fluid">
         {{-- Logo --}}
         <a class="navbar-brand py-0 d-flex align-items-center text-white fw-bold" href="{{ route('admin.dashboard')}}">
-          <span class="ps-3">Laravel CRM</span>
+          <span class="ps-1">Laravel CRM</span>
           <img src="/crm_logo_transparent.png" alt="logo">
         </a>
         {{-- Logo --}}
@@ -70,7 +70,7 @@
             {{-- Menu --}}
             <ul class="nav flex-column">
               {{-- Charts --}}
-              <li class="nav-item my-1">
+              <li class="nav-item my-1 p-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'ms-active' : '' }}" href="{{ route('admin.dashboard') }}">
                   <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
                   <span class="ps-1">
@@ -81,7 +81,7 @@
               {{-- Charts --}}
 
               {{-- Index Aziende --}}
-              <li class="nav-item my-1">
+              <li class="nav-item my-1 p-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.index' ? 'ms-active' : '' }}" href="{{ route('admin.companies.index') }}">
                   <i class="fa-solid fa-house fa-lg fa-fw ps-1"></i> 
                   <span class="ps-1">
@@ -92,7 +92,7 @@
               {{-- Index Aziende --}}
 
               {{-- Nuova Azienda --}}
-              <li class="nav-item my-1">
+              <li class="nav-item my-1 p-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.create' ? 'ms-active' : '' }}" href="{{ route('admin.companies.create') }}">
                   <i class="fa-solid fa-plus fa-lg fa-fw"></i> 
                   <span class="ps-1">
@@ -103,7 +103,7 @@
               {{-- Nuova Azienda --}}
 
               {{-- Nuovo Dipendente --}}
-              <li class="nav-item my-1 border-bottom border-bottom-md-none">
+              <li class="nav-item my-1 p-1 border-bottom border-bottom-md-none">
                 <a class="nav-link px-0 pb-3 text-white {{ Route::currentRouteName() == 'admin.employees.create' ? 'ms-active' : '' }}" href="{{ route('admin.employees.create') }}">
                   <i class="fa-solid fa-user-plus fa-lg fa-fw ps-1"></i> 
                   <span class="ps-1">
@@ -114,7 +114,7 @@
               {{-- Nuovo Dipendente --}}
 
               {{-- Logout --}}
-              <li class="nav-item mt-1">
+              <li class="nav-item mt-1 p-1">
                 <a class="nav-link px-0 text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class="fa-solid fa-door-closed fa-lg fa-fw ps-1"></i> 
                   <span class="ps-1">
