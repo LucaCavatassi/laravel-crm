@@ -14,6 +14,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- Usando Vite -->
     @vite(['resources/js/app.js'])
@@ -21,32 +23,22 @@
 
 <body>
     <div id="app">
-
-
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm py-0">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
-                        
-                    </div>
-                    {{-- config('app.name', 'Laravel') --}}
+                {{-- Brand + Home Link --}}
+                <a class="navbar-brand d-flex align-items-center py-0" href="{{ url('/') }}">
+                    <img src="/crm_logo_transparent.png" alt="logo">
                 </a>
 
+                {{-- Hamburger Toggler --}}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
+                    aria-expanded="false" aria-label="navbar opener">
+                    <span class="custom-toggler-icon p-1"><i class="fa-solid fa-user"></i></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link p-0" href="{{ url('/') }}"><img src="/crm_logo_transparent.png" alt="logo"></a>
-                        </li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
+                {{-- Collapsed Navbar --}}
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
