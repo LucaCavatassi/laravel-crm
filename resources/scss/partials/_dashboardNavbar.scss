@@ -1,0 +1,28 @@
+// Header
+.navbar-brand {
+    img {
+        height: $header-height;
+    }
+}
+.navbar-brand:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    color: $primary-blue!important;
+}
+.nav-link:hover {
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+    color: $primary-blue!important;
+}
+
+.navbar-toggler {
+    padding: 0.3rem;
+    border: 2px solid white;
+    .custom-toggler-icon {
+        color: white;
+    }
+}
+.navbar-toggler:focus {
+    box-shadow: 0 0 10px white!important;
+}
+// Sidebar 

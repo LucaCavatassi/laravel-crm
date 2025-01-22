@@ -26,14 +26,17 @@
 <body>
   <div id="app">
     {{-- Header --}}
-    <header class="navbar justify-content-between shadow-sm sticky-top">
+    <header class="navbar py-0 justify-content-between shadow-sm sticky-top">
       <div class="container-xxl">
         {{-- Logo --}}
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.dashboard')}}">Laravel CRM</a>
+        <a class="navbar-brand py-0 d-flex align-items-center text-white fw-bold" href="{{ route('admin.dashboard')}}">
+          <span class="ps-3">Laravel CRM</span>
+          <img src="/crm_logo_transparent.png" alt="logo">
+        </a>
         {{-- Logo --}}
   
         {{-- Toggler --}}
-        <button class="navbar-toggler d-inline d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler d-inline d-md-none collapsed me-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="custom-toggler-icon p-1"><i class="fa-solid fa-user"></i></span>
         </button>
         {{-- Toggler --}}
@@ -42,7 +45,7 @@
         <div class="navbar-nav d-none d-md-block">
           {{-- Logout --}}
           <div class="nav-item text-nowrap ms-2">
-            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+            <a class="nav-link text-white fw-bold fs-5 pe-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               Logout
             </a>
             {{-- Logout Form --}}
@@ -54,15 +57,11 @@
           {{-- Logout --}}
         </div>
         {{-- Links --}}
-
       </div>
     </header>
 
     <div class="container-fluid vh-100">
       <div class="row h-100">
-        <!-- Definire solo parte del menu di navigazione inizialmente per poi
-        aggiungere i link necessari giorno per giorno
-        -->
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
