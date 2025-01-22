@@ -26,7 +26,7 @@ Route::middleware('auth')
     ->prefix('admin') // Prefisso nell'url delle rotte di questo gruppo
     ->name('admin.') // inizio di ogni nome delle rotte del gruppo
     ->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('charts', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('companies', CompanyController::class);
         Route::resource('employees', EmployeeController::class);
     });

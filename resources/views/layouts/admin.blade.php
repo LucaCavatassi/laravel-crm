@@ -25,27 +25,36 @@
 
 <body>
   <div id="app">
-
-    <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-2 shadow">
-      <div class="row justify-content-between">
-        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">BoolPress</a>
-        <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-          data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-          aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    {{-- Header --}}
+    <header class="navbar justify-content-between shadow-sm sticky-top">
+      <div class="container-xxl">
+        {{-- Logo --}}
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{{ route('admin.dashboard')}}">Laravel CRM</a>
+        {{-- Logo --}}
+  
+        {{-- Toggler --}}
+        <button class="navbar-toggler d-inline d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="custom-toggler-icon p-1"><i class="fa-solid fa-user"></i></span>
         </button>
-      </div>
-      <div class="navbar-nav">
-        <div class="nav-item text-nowrap ms-2">
-          <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
-            {{ __('Logout') }}
-          </a>
-          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-          </form>
+        {{-- Toggler --}}
+  
+        {{-- Links --}}
+        <div class="navbar-nav d-none d-md-block">
+          {{-- Logout --}}
+          <div class="nav-item text-nowrap ms-2">
+            <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+              Logout
+            </a>
+            {{-- Logout Form --}}
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+            </form>
+            {{-- Logout Form --}}
+          </div>
+          {{-- Logout --}}
         </div>
+        {{-- Links --}}
+
       </div>
     </header>
 
