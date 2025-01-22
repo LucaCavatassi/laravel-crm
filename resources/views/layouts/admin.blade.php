@@ -26,7 +26,7 @@
 <body>
   <div id="app">
     {{-- Header --}}
-    <header class="navbar py-0 justify-content-between shadow-sm sticky-top">
+    <header class="navbar py-0 justify-content-between sticky-top">
       <div class="container-xxl">
         {{-- Logo --}}
         <a class="navbar-brand py-0 d-flex align-items-center text-white fw-bold" href="{{ route('admin.dashboard')}}">
@@ -60,26 +60,41 @@
       </div>
     </header>
 
-    <div class="container-fluid vh-100">
-      <div class="row h-100">
-        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark navbar-dark sidebar collapse">
+    <div class="container-fluid">
+      <div class="row">
+        {{-- Sidebar --}}
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
-                  href="{{ route('admin.dashboard') }}">
-                  <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
+                <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'ms-active' : '' }}" href="{{ route('admin.dashboard') }}">
+                  <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> Dashboard
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.index' ? 'ms-active' : '' }}" href="{{ route('admin.companies.index') }}">
+                  <i class="fa-solid fa-house fa-lg fa-fw"></i> Aziende
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.create' ? 'ms-active' : '' }}" href="{{ route('admin.companies.create') }}">
+                  <i class="fa-solid fa-plus fa-lg fa-fw"></i> Nuova azienda
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link px-0 text-white {{ Route::currentRouteName() == 'admin.employees.create' ? 'ms-active' : '' }}" href="{{ route('admin.employees.create') }}">
+                  <i class="fa-solid fa-user-plus fa-lg fa-fw"></i> Nuovo dipendente
                 </a>
               </li>
             </ul>
-
-
           </div>
         </nav>
-
+        {{-- Sidebar --}}
+        {{-- Content --}}
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           @yield('content')
         </main>
+        {{-- Content --}}
       </div>
     </div>
 

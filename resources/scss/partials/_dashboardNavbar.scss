@@ -26,3 +26,15 @@
     box-shadow: 0 0 10px white!important;
 }
 // Sidebar 
+#sidebarMenu {
+    height: calc(100vh - $header-height);
+    background-color: $secondary-blue;
+    .ms-active {
+        color: $primary-blue!important;
+    }
+}
+
+main {
+    height: calc(100vh - $header-height);
+    overflow: scroll;
+}
