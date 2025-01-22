@@ -1,14 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
 @import "bootstrap";
-
 /********** COMMON **********/
-// vars
+// util
 $header-height: 60px;
-
+// palette
 $primary-blue: rgb(34, 158, 243);
 $secondary-blue: rgb(12, 76, 186);
 $secondary-blue-transparent: rgba(12, 76, 186, 0.8);
-
 
 // body background
 body::before {
@@ -18,152 +16,16 @@ body::before {
     left: 0;
     right: 0;
     z-index: -1;
-
+    
     background-image: url(/public/crm_logo.jpg);
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
     filter: opacity(0.1);
-
+    
     width: 100%;
     height: 100%
 }
-
-/********** SPECIFIC **********/
-// NAVBAR
-.navbar {
-    height: $header-height;
-    background-color: $secondary-blue!important;
-    .container {
-        max-height: $header-height;
-        .navbar-brand {
-            img {
-                height: $header-height;
-                transform: scale(1.2);
-            }
-            img:hover {
-                transform: scale(1.4);
-                transition: all 0.3s ease;
-            }
-        }
-        .navbar-toggler {
-            padding: 0.3rem;
-            border: 2px solid white;
-            .custom-toggler-icon {
-                color: white;
-            }
-        }
-        .navbar-toggler:focus {
-            box-shadow: 0 0 10px white!important;
-        }
-
-        // NavbarBigScreen
-        .nav-item {
-            a:hover {
-                color: $primary-blue!important;
-                transform: scale(1.2);
-                transition: all 0.3s ease;
-            }
-        }
-        // NavbarSmallScreen
-        #navbarSupportedContent {
-            position: absolute;
-            top: $header-height;
-            right: 0;
-            width: 100vw;
-            z-index: 999;
-            .navbar-nav{
-                background-color: $secondary-blue-transparent!important;
-                .nav-item {
-                    border-bottom: 2px solid white;
-                    a:hover {
-                        color: $primary-blue!important;
-                        transform: translateX(5%);
-                        transition: all 0.3s ease;
-                    }
-                }
-            }
-
-        }
-    }
-
-    
-}
-// JUMBOTRON
-.jumbotron {
-    height: calc(100vh - $header-height);
-    .container {
-        height: calc(100vh - $header-height);
-        color: $primary-blue;
-
-        // TITLE
-        h1 {
-            opacity: 0;
-            animation: fadeIn 1.3s ease-out forwards; /* Apply animation */
-        }
-        // animation fadein title
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        // LINK
-        a {
-            color: $primary-blue;
-            text-decoration: none;
-            animation: fadeInLink 1.3s ease-out forwards;
-        }
-        // animation fadein link
-        @keyframes fadeInLink {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-        // hover scale
-        a:hover {
-            transition: all 0.3s ease;
-            transform: scale(1.3);
-            color: $secondary-blue!important;
-        }
-    }
-}
-// jumbotron arrow animation
-.arrow {
-    margin-top: 50px;
-    transform: rotate(180deg);
-}
-.arrow span {
-    display: block;
-    width: 20px;
-    height: 20px;
-    border-bottom: 5px solid $primary-blue;
-    border-right: 5px solid $primary-blue;
-    transform: rotate(45deg);
-    margin: -15px;
-    animation: animate 2s infinite;
-}
-.arrow span:nth-child(2) {
-    animation-delay: -0.2s;
-}
-.arrow span:nth-child(3) {
-    animation-delay: -0.4s;
-}
-@keyframes animate {
-    0% {
-        opacity: 0;
-        transform: rotate(45deg) translate(-20px, -20px);
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: rotate(45deg) translate(20px, 20px);
-    }
-}
+// partials
+@import './partials/navbar';
+@import './partials/jumbotron';

@@ -1,0 +1,59 @@
+// NAVBAR
+.navbar {
+    height: $header-height;
+    background-color: $secondary-blue!important;
+    .container {
+        max-height: $header-height;
+        .navbar-brand {
+            img {
+                height: $header-height;
+                transform: scale(1.2);
+            }
+            img:hover {
+                transform: scale(1.4);
+                transition: all 0.3s ease;
+            }
+        }
+        .navbar-toggler {
+            padding: 0.3rem;
+            border: 2px solid white;
+            .custom-toggler-icon {
+                color: white;
+            }
+        }
+        .navbar-toggler:focus {
+            box-shadow: 0 0 10px white!important;
+        }
+
+        // NavbarBigScreen
+        .nav-item {
+            a:hover {
+                color: $primary-blue!important;
+                transform: scale(1.2);
+                transition: all 0.3s ease;
+            }
+        }
+        // NavbarSmallScreen
+        #navbarSupportedContent {
+            position: absolute;
+            top: $header-height;
+            right: 0;
+            width: 100vw;
+            z-index: 999;
+            .navbar-nav{
+                background-color: $secondary-blue-transparent!important;
+                .nav-item {
+                    border-bottom: 2px solid white;
+                    a:hover {
+                        color: $primary-blue!important;
+                        transform: translateX(5%);
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+
+        }
+    }
+
+    
+}
