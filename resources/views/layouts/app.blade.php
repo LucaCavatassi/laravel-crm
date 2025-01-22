@@ -42,28 +42,74 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link fw-bold text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <li class="nav-item ps-3 d-block d-md-none">
+                                <a class="nav-link my-3 fs-5 fw-bold text-white" href="{{ route('login') }}">
+                                    <span class="ps-2">
+                                        Login 
+                                        <span>&RightArrow;</span>
+                                        <span>
+                                            <i class="fa-solid fa-door-open"></i>
+                                        </span>
+                                    </span>
+                                </a>
                             </li>
                         @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                        <li class="nav-item ps-3 ps-md-0 d-block d-md-none">
+                            <a class="nav-link my-3 fs-5 fw-bold text-white" href="{{ route('admin.dashboard') }}">
+                                <span class="ps-2 ps-md-0">
+                                    Dashboard 
+                                    <span>&rightarrow;</span>
+                                    <i class="fa-solid fa-chart-line"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item ps-3 ps-md-0 d-block d-md-none">
+                            <a class="nav-link my-3 fs-5 fw-bold text-white" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                <span class="ps-2 ps-md-0">
+                                    Logout
+                                    <span>&RightArrow;</span>
+                                    <i class="fa-solid fa-door-closed"></i>
+                                </span>
+                            </a>
+                            {{-- Logout Form --}}
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+                        @endguest
+                    </ul>
+                </div>
+
+                {{-- Opened Navbar --}}
+                <div class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            <li class="nav-item ps-3 ps-md-0">
+                                <a class="nav-link my-3 fs-5 fw-bold text-white" href="{{ route('login') }}">
+                                    <span class="ps-2 ps-md-0">
+                                        Login 
+                                    </span>
                                 </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                    document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
+                            </li>
+                        @else
+                            <li class="nav-item d-flex ps-3 ps-md-0">
+                                <a class="nav-link my-3 fs-5 fw-bold text-white" href="{{ route('admin.dashboard') }}">
+                                    <span class="ps-2 pe-2 ps-md-0">
+                                        Dashboard 
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item d-flex ps-3 ps-md-0">
+                                <a class="nav-link my-3 fs-5 fw-bold text-white" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                    <span>
+                                        Logout
+                                    </span>
+                                </a>
+                                {{-- Logout Form --}}
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
                             </li>
                         @endguest
                     </ul>

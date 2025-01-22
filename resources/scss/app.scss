@@ -4,8 +4,10 @@
 /********** COMMON **********/
 // vars
 $header-height: 60px;
-$primary-blue: rgb(34 158 243);
+
+$primary-blue: rgb(34, 158, 243);
 $secondary-blue: rgb(12, 76, 186);
+$secondary-blue-transparent: rgba(12, 76, 186, 0.8);
 
 
 // body background
@@ -28,7 +30,7 @@ body::before {
 }
 
 /********** SPECIFIC **********/
-// navabar size
+// NAVBAR
 .navbar {
     height: $header-height;
     background-color: $secondary-blue!important;
@@ -54,18 +56,40 @@ body::before {
         .navbar-toggler:focus {
             box-shadow: 0 0 10px white!important;
         }
+
+        // NavbarBigScreen
         .nav-item {
             a:hover {
                 color: $primary-blue!important;
-                transform: scale(1.3);
+                transform: scale(1.2);
                 transition: all 0.3s ease;
             }
+        }
+        // NavbarSmallScreen
+        #navbarSupportedContent {
+            position: absolute;
+            top: $header-height;
+            right: 0;
+            width: 100vw;
+            z-index: 999;
+            .navbar-nav{
+                background-color: $secondary-blue-transparent!important;
+                .nav-item {
+                    border-bottom: 2px solid white;
+                    a:hover {
+                        color: $primary-blue!important;
+                        transform: translateX(5%);
+                        transition: all 0.3s ease;
+                    }
+                }
+            }
+
         }
     }
 
     
 }
-// jumbotron size
+// JUMBOTRON
 .jumbotron {
     height: calc(100vh - $header-height);
     .container {
@@ -109,7 +133,7 @@ body::before {
         }
     }
 }
-// jumbotron arrow
+// jumbotron arrow animation
 .arrow {
     margin-top: 50px;
     transform: rotate(180deg);
