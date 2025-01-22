@@ -27,7 +27,7 @@
   <div id="app">
     {{-- Header --}}
     <header class="navbar py-0 justify-content-between sticky-top">
-      <div class="container-xxl">
+      <div class="container-fluid">
         {{-- Logo --}}
         <a class="navbar-brand py-0 d-flex align-items-center text-white fw-bold" href="{{ route('admin.dashboard')}}">
           <span class="ps-3">Laravel CRM</span>
@@ -42,20 +42,20 @@
         {{-- Toggler --}}
   
         {{-- Links --}}
-        <div class="navbar-nav d-none d-md-block">
+        {{-- <div class="navbar-nav d-none d-md-block">
           {{-- Logout --}}
-          <div class="nav-item text-nowrap ms-2">
+          {{-- <div class="nav-item text-nowrap ms-2">
             <a class="nav-link text-white fw-bold fs-5 pe-3" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
               Logout
-            </a>
+            </a> --}}
             {{-- Logout Form --}}
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
               @csrf
-            </form>
+            </form> --}}
             {{-- Logout Form --}}
-          </div>
+          {{-- </div> --}}
           {{-- Logout --}}
-        </div>
+        {{-- </div> --}} 
         {{-- Links --}}
       </div>
     </header>
@@ -64,27 +64,52 @@
       <div class="row">
         {{-- Sidebar --}}
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-          <div class="position-sticky pt-3">
+          <div class="position-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item">
+              <li class="nav-item my-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'ms-active' : '' }}" href="{{ route('admin.dashboard') }}">
-                  <i class="fa-solid fa-chart-line fa-lg fa-fw"></i> Dashboard
+                  <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
+                  <span class="ps-1">
+                    Dashboard
+                  </span> 
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item my-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.index' ? 'ms-active' : '' }}" href="{{ route('admin.companies.index') }}">
-                  <i class="fa-solid fa-house fa-lg fa-fw"></i> Aziende
+                  <i class="fa-solid fa-house fa-lg fa-fw ps-1"></i> 
+                  <span class="ps-1">
+                    Aziende
+                  </span>
                 </a>
               </li>
-              <li class="nav-item">
+              <li class="nav-item my-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.create' ? 'ms-active' : '' }}" href="{{ route('admin.companies.create') }}">
-                  <i class="fa-solid fa-plus fa-lg fa-fw"></i> Nuova azienda
+                  <i class="fa-solid fa-plus fa-lg fa-fw"></i> 
+                  <span class="ps-1">
+                    Nuova azienda
+                  </span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link px-0 text-white {{ Route::currentRouteName() == 'admin.employees.create' ? 'ms-active' : '' }}" href="{{ route('admin.employees.create') }}">
-                  <i class="fa-solid fa-user-plus fa-lg fa-fw"></i> Nuovo dipendente
+              <li class="nav-item my-1 border-bottom border-bottom-md-none">
+                <a class="nav-link px-0 pb-3 text-white {{ Route::currentRouteName() == 'admin.employees.create' ? 'ms-active' : '' }}" href="{{ route('admin.employees.create') }}">
+                  <i class="fa-solid fa-user-plus fa-lg fa-fw ps-1"></i> 
+                  <span class="ps-1">
+                    Nuovo dipendente
+                  </span>
                 </a>
+              </li>
+              <li class="nav-item mt-1">
+                <a class="nav-link px-0 text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                  <i class="fa-solid fa-door-closed fa-lg fa-fw ps-1"></i> 
+                  <span class="ps-1">
+                    Logout
+                  </span>
+                </a>
+                {{-- Logout Form --}}
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+                </form>
+                {{-- Logout Form --}}
               </li>
             </ul>
           </div>
