@@ -34,14 +34,14 @@
           <img src="/crm_logo_transparent.png" alt="logo">
         </a>
         {{-- Logo --}}
-  
+
         {{-- Toggler --}}
         <button class="navbar-toggler d-inline d-md-none collapsed me-2" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="custom-toggler-icon p-1"><i class="fa-solid fa-user"></i></span>
         </button>
         {{-- Toggler --}}
   
-        {{-- Links --}}
+        {{-- Links Useless --}}
         {{-- <div class="navbar-nav d-none d-md-block">
           {{-- Logout --}}
           {{-- <div class="nav-item text-nowrap ms-2">
@@ -56,16 +56,20 @@
           {{-- </div> --}}
           {{-- Logout --}}
         {{-- </div> --}} 
-        {{-- Links --}}
+        {{-- Links Useless --}}
       </div>
     </header>
+    {{-- Header --}}
 
+    {{-- Main Container --}}
     <div class="container-fluid">
       <div class="row">
         {{-- Sidebar --}}
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
           <div class="position-sticky">
+            {{-- Menu --}}
             <ul class="nav flex-column">
+              {{-- Charts --}}
               <li class="nav-item my-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.dashboard' ? 'ms-active' : '' }}" href="{{ route('admin.dashboard') }}">
                   <i class="fa-solid fa-chart-line fa-lg fa-fw"></i>
@@ -74,6 +78,9 @@
                   </span> 
                 </a>
               </li>
+              {{-- Charts --}}
+
+              {{-- Index Aziende --}}
               <li class="nav-item my-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.index' ? 'ms-active' : '' }}" href="{{ route('admin.companies.index') }}">
                   <i class="fa-solid fa-house fa-lg fa-fw ps-1"></i> 
@@ -82,6 +89,9 @@
                   </span>
                 </a>
               </li>
+              {{-- Index Aziende --}}
+
+              {{-- Nuova Azienda --}}
               <li class="nav-item my-1">
                 <a class="nav-link ps-0 text-white {{ Route::currentRouteName() == 'admin.companies.create' ? 'ms-active' : '' }}" href="{{ route('admin.companies.create') }}">
                   <i class="fa-solid fa-plus fa-lg fa-fw"></i> 
@@ -90,6 +100,9 @@
                   </span>
                 </a>
               </li>
+              {{-- Nuova Azienda --}}
+
+              {{-- Nuovo Dipendente --}}
               <li class="nav-item my-1 border-bottom border-bottom-md-none">
                 <a class="nav-link px-0 pb-3 text-white {{ Route::currentRouteName() == 'admin.employees.create' ? 'ms-active' : '' }}" href="{{ route('admin.employees.create') }}">
                   <i class="fa-solid fa-user-plus fa-lg fa-fw ps-1"></i> 
@@ -98,6 +111,9 @@
                   </span>
                 </a>
               </li>
+              {{-- Nuovo Dipendente --}}
+
+              {{-- Logout --}}
               <li class="nav-item mt-1">
                 <a class="nav-link px-0 text-white" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                   <i class="fa-solid fa-door-closed fa-lg fa-fw ps-1"></i> 
@@ -111,10 +127,13 @@
                 </form>
                 {{-- Logout Form --}}
               </li>
+              {{-- Logout --}}
             </ul>
+            {{-- Menu --}}
           </div>
         </nav>
         {{-- Sidebar --}}
+
         {{-- Content --}}
         <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
           @yield('content')
@@ -122,7 +141,7 @@
         {{-- Content --}}
       </div>
     </div>
-
+    {{-- Main Container --}}
   </div>
 </body>
 
