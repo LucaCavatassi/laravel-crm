@@ -52,6 +52,7 @@ class CompanyController extends Controller
         return redirect()->route('admin.companies.index')->with('success', 'Azienda creata con successo!');
     }
 
+    
     /**
      * Display the specified resource.
      */
