@@ -21,7 +21,7 @@ class CompanyController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
+    {   
         return view('admin.companies.create');
     }
 
@@ -52,7 +52,7 @@ class CompanyController extends Controller
         return redirect()->route('admin.companies.index')->with('success', 'Azienda creata con successo!');
     }
 
-    
+
     /**
      * Display the specified resource.
      */
@@ -60,7 +60,11 @@ class CompanyController extends Controller
     {
         // $company = Company::with('employees')->findOrFail($company->id);
         // EAGER LOADING WITH FOREIGN LOADED IN MODEL
-        $company->load('employees'); 
+        // $company->load('employees'); 
+
+        $company->load(['employees' => function ($query) {
+            $query->orderBy('created_at', 'desc'); // Sorting by latest created
+        }]);
         return view('admin.companies.show', compact('company'));
     }
 

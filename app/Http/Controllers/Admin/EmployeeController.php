@@ -21,8 +21,9 @@ class EmployeeController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        //
+    {   
+        $companies = Company::all();
+        return view('admin.employees.create', compact('companies'));
     }
 
     /**
@@ -30,9 +31,28 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate input
+        $request->validate([
+            'name' => ['required', 'string', 'min:3', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'surname' => ['required', 'string', 'min:3', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'email' => ['required', 'email', 'min:3', 'max:255', 'unique:employees,email'],
+            'phone' => ['nullable', 'string', 'min:10', 'max:20', 'regex:/^[0-9()\-\+ ]+$/'],
+            'company_id' => ['required', 'exists:companies,id'],
+        ], [
+            'name.regex' => 'Il nome può contenere solo lettere e spazi.',
+            'surname.regex' => 'Il cognome può contenere solo lettere e spazi.',
+            'phone.regex' => 'Il numero di telefono può contenere solo numeri, parentesi (), trattini - e il segno più +.',
+        ]);
+    
+        // Create new Employee using mass assignment
+        $employee = Employee::create($request->all());
+    
+        // Retrieve company_id from the request
+        $companyId = $employee->company_id; 
+    
+        // Redirect to the company's show page with success message
+        return redirect()->route('admin.companies.show', $companyId)->with('success', 'Dipendente creato con successo!');
     }
-
     /**
      * Display the specified resource.
      */
@@ -61,7 +81,7 @@ class EmployeeController extends Controller
             'name' => ['required', 'string','min:3', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'surname' => ['required', 'string','min:3', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'email' => ['required', 'email','min:3', 'max:255', 'unique:employees,email,' . $employee->id],
-            'phone' => ['nullable', 'string','min:10', 'max:20', 'regex:/^[0-9()\-\+]+$/'],
+            'phone' => ['nullable', 'string','min:10', 'max:20', 'regex:/^[0-9()\-\+ ]+$/'],
             'company_id' => ['required', 'exists:companies,id'],
         ], [
             'name.regex' => 'Il nome può contenere solo lettere e spazi.',
