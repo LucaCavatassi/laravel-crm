@@ -56,13 +56,13 @@
                                 </p>
                             </div>
                             <div class="col-3 d-flex flex-column flex-md-row justify-content-end gap-0 gap-md-3">
-                                <form action="{{ route('admin.employees.edit', $employee->id) }}" method="GET">
+                                <form id="edit-form" action="{{ route('admin.employees.edit', $employee->id) }}" method="GET">
                                     @csrf
-                                    <button class="btn btn-primary mb-2 mb-md-0">
-                                        <span class="d-none d-md-inline">Modifica</span>
-                                        <i class="fa-solid fa-pen-to-square"></i>
-                                    </button>
                                 </form>
+                                <button class="btn btn-primary mb-2 mb-md-0" onclick="event.preventDefault(); document.getElementById('edit-form').submit();">
+                                    <span class="d-none d-md-inline">Modifica</span>
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                     <span class="d-none d-md-inline">Elimina</span>
                                     <i class="fa-solid fa-trash"></i>
