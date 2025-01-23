@@ -14,7 +14,7 @@
             <div class="list-group">
                 {{-- Item --}}
                 @foreach ($companies as $company)
-                <a href="{{ route('admin.companies.show', $company->name) }}" class="list-group-item list-group-item-action d-flex gap-3 py-3 mb-3" aria-current="true">
+                <a href="{{ route('admin.companies.show', $company->id) }}" class="list-group-item list-group-item-action d-flex gap-3 py-3 mb-3" aria-current="true">
                     {{-- Logo --}}
                     <img src={{ $company->logo }} alt="twbs" width="32" height="32" class="rounded-circle flex-shrink-0 align-self-center">
                     {{-- Logo --}}

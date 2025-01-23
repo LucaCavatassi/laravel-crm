@@ -36,9 +36,9 @@ class CompanyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $name)
+    public function show(Company $company)
     {
-        //
+        return view('admin.companies.show', compact('company'));
     }
 
     /**
