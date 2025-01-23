@@ -5,4 +5,4 @@ import "~resources/scss/app.scss";
 const successPop = document.querySelector('.alert-success');
 setTimeout(() => {
     successPop.classList.add('d-none');
-}, 3000)
+}, 4000)

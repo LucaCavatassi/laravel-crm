@@ -43,9 +43,11 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Employee $employee)
     {
-        //
+        $employee->load('companies');
+        dd($employee);
+        return view('admin.employees.update', $employee);
     }
 
     /**
@@ -61,9 +63,7 @@ class EmployeeController extends Controller
      */
     public function destroy(Employee $employee)
     {
-        // Store the company ID before deleting the employee
         $companyId = $employee->company_id;
-
         $employee->delete();
 
         return redirect()->route('admin.companies.show', $companyId)->with('success', 'Dipendente eliminato con successo!');

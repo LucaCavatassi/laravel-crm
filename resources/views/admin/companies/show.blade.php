@@ -56,10 +56,13 @@
                                 </p>
                             </div>
                             <div class="col-3 d-flex flex-column flex-md-row justify-content-end gap-0 gap-md-3">
-                                <button class="btn btn-primary mb-2 mb-md-0">
-                                    <span class="d-none d-md-inline">Modifica</span>
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </button>
+                                <form action="{{ route('admin.employees.edit', $employee->id) }}" method="GET">
+                                    @csrf
+                                    <button class="btn btn-primary mb-2 mb-md-0">
+                                        <span class="d-none d-md-inline">Modifica</span>
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </form>
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                     <span class="d-none d-md-inline">Elimina</span>
                                     <i class="fa-solid fa-trash"></i>
@@ -80,12 +83,12 @@
                                     Clicca elimina per eliminarlo definitivamente o chiudi per tornare indietro.
                                 </div>
                                 <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
-                                <form action="{{ route('admin.employees.destroy', $employee->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Elimina</button>
-                                </form>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+                                    <form action="{{ route('admin.employees.destroy', $employee->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Elimina</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
