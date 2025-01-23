@@ -6,7 +6,7 @@
             {{-- Info --}}
             <div class="d-flex justify-content-between">
                 <h1 class="mb-2">Tutte le aziende</h1>
-                <small class="opacity-75 fw-bold align-self-center">Clicca per vedere i dettagli dell'azienda</small>
+                <small class="opacity-75 fw-bold align-self-center text-end">Clicca per vedere i dettagli dell'azienda</small>
             </div>
             {{-- Info --}}
 

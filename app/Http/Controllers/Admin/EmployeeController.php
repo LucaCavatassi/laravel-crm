@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
@@ -58,8 +59,14 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Employee $employee)
     {
-        //
+        // Store the company ID before deleting the employee
+        $companyId = $employee->company_id;
+        dd($employee);
+        // Delete the employee
+        $employee->delete();
+        // Redirect to the company's page after deletion
+        return redirect()->route('admin.companies.show', $companyId)->with('success', 'Dipendente eliminato con successo!');
     }
 }
