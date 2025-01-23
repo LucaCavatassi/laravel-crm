@@ -1,9 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
-    <div class="container">
-        <h1>{{ $company->name }}</h1>
-        <p><strong>VAT Number:</strong> {{ $company->vat_num }}</p>
-        <img src="{{ $company->logo }}" alt="{{ $company->name }}" width="100">
-    </div>
+    <h1>{{ $company->name }}</h1>
+    <p>VAT Number: {{ $company->vat_num }}</p>
+    <img src="{{ $company->logo }}" alt="{{ $company->name }}" width="100">
+
+    <h2>Employees</h2>
+    @if($employees->isEmpty())
+        <p>No employees found for this company.</p>
+    @else
+        <ul>
+            @foreach($employees as $employee)
+                <li>{{ $employee->name }} - {{ $employee->position }}</li>
+            @endforeach
+        </ul>
+    @endif
 @endsection

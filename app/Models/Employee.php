@@ -12,6 +12,6 @@ class Employee extends Model
 
     public function companies(): BelongsTo
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'company_id');
     }
 }

@@ -38,7 +38,11 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        return view('admin.companies.show', compact('company'));
+        $company = Company::with('employees')->findOrFail($company->id);
+        dd($company);
+        // $company->load('employees'); 
+        // $employees = $company->employees; // Get employees
+        return view('admin.companies.show', compact('company', 'employees'));
     }
 
     /**
