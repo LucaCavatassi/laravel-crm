@@ -63,10 +63,9 @@ class EmployeeController extends Controller
     {
         // Store the company ID before deleting the employee
         $companyId = $employee->company_id;
-        dd($employee);
-        // Delete the employee
+
         $employee->delete();
-        // Redirect to the company's page after deletion
+
         return redirect()->route('admin.companies.show', $companyId)->with('success', 'Dipendente eliminato con successo!');
     }
 }
