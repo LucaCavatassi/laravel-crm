@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
@@ -46,18 +47,31 @@ class EmployeeController extends Controller
     public function edit(Employee $employee)
     {
         $employee->load('companies');
-        dd($employee);
-        return view('admin.employees.update', $employee);
+        $companies = Company::all();
+        return view('admin.employees.update', compact(['employee', 'companies']));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
-    }
+        // Validate input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:employees,email,' . $employee->id,
+            'phone' => 'nullable|string|max:20',
+            'company_id' => 'required|exists:companies,id',
+        ]);
 
+        // Update employee
+        $employee->update($request->except('_method', '_token'));
+        // Retrieve id to redirect to company show
+        $companyId = $employee->company_id;
+        // Redirect to the company's show page
+        return redirect()->route('admin.companies.show', $companyId)->with('success', 'Dipendente aggiornato con successo!');
+    }
     /**
      * Remove the specified resource from storage.
      */
