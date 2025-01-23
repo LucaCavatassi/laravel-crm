@@ -2,6 +2,15 @@
 
 @section('content')
     <div class="my-4 p-4">
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show my-3"  role="alert">
+                    <p class="mb-0">{{ $error }}</p>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endforeach
+        @endif
+
         <h1 class="mb-3">Modifica i dati del dipendente</h1>
         <form action="{{ route('admin.employees.update', $employee->id) }}" method="POST">
             @method('PUT')
