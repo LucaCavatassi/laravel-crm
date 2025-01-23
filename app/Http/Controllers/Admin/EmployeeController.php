@@ -58,10 +58,10 @@ class EmployeeController extends Controller
     {
         // Validate input
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
-            'surname' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
-            'email' => ['required', 'email', 'max:255', 'unique:employees,email,' . $employee->id],
-            'phone' => ['nullable', 'string', 'max:20', 'regex:/^[0-9()\-\+]+$/'],
+            'name' => ['required', 'string','min:3', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'surname' => ['required', 'string','min:3', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
+            'email' => ['required', 'email','min:3', 'max:255', 'unique:employees,email,' . $employee->id],
+            'phone' => ['nullable', 'string','min:10', 'max:20', 'regex:/^[0-9()\-\+]+$/'],
             'company_id' => ['required', 'exists:companies,id'],
         ], [
             'name.regex' => 'Il nome può contenere solo lettere e spazi.',

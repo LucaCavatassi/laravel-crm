@@ -30,7 +30,26 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validate the incoming request
+        $request->validate([
+            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'logo' => ['required', 'string', 'min:3', 'max:255'],
+            'vat_num' => ['required', 'numeric', 'digits:11', 'unique:companies,vat_num'], // Assuming 'companies' is the table name
+        ], [
+            'name.max' => 'Il nome deve avere al massimo 255 caratteri.',
+            'vat_num.digits:11' => 'La partita IVA deve avere 11 numeri.',
+            'vat_num.unique' => 'La partita IVA è già stata registrata.',
+        ]);
+
+        // Create a new Company instance and save the validated data
+        $company = new Company();
+        $company->name = $request->input('name');
+        $company->logo = $request->input('logo');
+        $company->vat_num = $request->input('vat_num');
+        $company->save();
+
+        // Redirect to a page (e.g., the company list or the newly created company)
+        return redirect()->route('admin.companies.index')->with('success', 'Azienda creata con successo!');
     }
 
     /**

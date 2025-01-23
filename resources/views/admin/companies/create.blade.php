@@ -3,23 +3,32 @@
 @section('content')
     <div class="container">
         <div class="my-3">
+            @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible fade show my-3"  role="alert">
+                        <p class="mb-0">{{ $error }}</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endforeach
+            @endif
+
             <h1 class="mb-3">Aggiungi nuova azienda</h1>
 
             <form action="{{ route('admin.companies.store')}}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="name">Nome</label>
-                    <input class="form-control" type="text" name="name" id="name" value="" placeholder="Inserisci il nome dell'azienda" required>
+                    <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}" placeholder="Inserisci il nome dell'azienda" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="email">Partita Iva</label>
-                    <input class="form-control" type="number" name="email" id="email" value="Inserisci il numero di partita iva" minlength="11" maxlength="11" required>
+                    <label class="form-label opacity-75 fw-bold" for="vat_num">Partita Iva</label>
+                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ old('name') }}" placeholder="Inserisci il numero di partita iva" minlength="11" maxlength="11" required>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="surname">Logo</label>
-                    <input class="form-control" type="text" name="surname" id="surname" value=""required>
+                    <label class="form-label opacity-75 fw-bold" for="logo">Logo</label>
+                    <input class="form-control" type="text" name="logo" id="logo" value="{{ old('name') }}" required>
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">
