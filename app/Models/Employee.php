@@ -9,9 +9,17 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Employee extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'name',
+        'surname',
+        'email',
+        'phone',
+        'company_id',
+    ];
 
     public function companies(): BelongsTo
-    {
+    {        
         return $this->belongsTo(Company::class, 'company_id');
     }
 }
