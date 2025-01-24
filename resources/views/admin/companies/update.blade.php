@@ -17,27 +17,31 @@
                 <small class="opacity-75 text-end">I campi con l'asterisco (*) sono obbligatori.</small>
             </div>
 
-            <form action="{{ route('admin.companies.update', $company->id) }}" method="POST">
+            <form action="{{ route('admin.companies.update', $company->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="name">Nome*</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $company->name ?? old('name') }}" required>
+                    <input class="form-control" type="text" name="name" id="name" value="{{ old('name') ?? $company->name }}" required>
                 </div>
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="vat_num">P.Iva*</label>
-                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ $company->vat_num ?? old('vat_num') }}" required>
+                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ old('vat_num') ?? $company->vat_num }}" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
-                    <input class="form-control" type="text" name="logo" id="logo" value="{{ $company->logo ?? old('logo') }}" required>
-                </div>
+                    <input class="form-control" type="file" name="logo" id="logo">
+                </div>            
             
-                <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary btn-lg">Modifica</button>
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="d-flex flex-column justify-content-center align-content-center">
+                        <p class="fw-bold opacity-75">Logo attuale</p>
+                        <img src="{{ asset($company->logo) }}" alt="{{ $company->name }}" width="150" height="150" class="rounded flex-shrink-0 align-self-center">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg h-50 align-self-end">Modifica</button>
                 </div>
             </form>
         </div>

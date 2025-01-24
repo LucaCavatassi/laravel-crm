@@ -22,22 +22,22 @@
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="name">Nome*</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $employee->name ?? old('name') }}" required>
+                    <input class="form-control" type="text" name="name" id="name" value="{{ old('name') ?? $employee->name }}" required>
                 </div>
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="surname">Cognome*</label>
-                    <input class="form-control" type="text" name="surname" id="surname" value="{{ $employee->surname ?? old('surname') }}" required>
+                    <input class="form-control" type="text" name="surname" id="surname" value="{{ old('surname') ?? $employee->surname }}" required>
                 </div>
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="email">Email*</label>
-                    <input class="form-control" type="email" name="email" id="email" value="{{ $employee->email ?? old('email') }}" required>
+                    <input class="form-control" type="email" name="email" id="email" value="{{ old('email') ?? $employee->email }}" required>
                 </div>
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="phone">Telefono*</label>
-                    <input class="form-control" type="tel" name="phone" id="phone" value="{{ $employee->phone ?? old('phone') }}" required>
+                    <input class="form-control" type="tel" name="phone" id="phone" value="{{ old('phone') ?? $employee->phone }}" required>
                 </div>
             
                 <div class="mb-3">

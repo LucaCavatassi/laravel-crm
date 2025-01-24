@@ -17,7 +17,7 @@
                 <small class="opacity-75 text-end">I campi con l'asterisco (*) sono obbligatori.</small>
             </div>
 
-            <form action="{{ route('admin.companies.store')}}" method="POST">
+            <form action="{{ route('admin.companies.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="name">Nome*</label>
@@ -31,7 +31,7 @@
 
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
-                    <input class="form-control" type="file" name="logo" id="logo" value="{{ old('logo') }}" required>
+                    <input class="form-control" type="file" name="logo" id="logo">
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">

@@ -34,7 +34,7 @@ class CompanyController extends Controller
         // Validate the incoming request
         $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'logo' => ['required', 'string', 'min:3', 'max:255'],
+            'logo' => ['image', 'mimes:jpeg,png,jpg', 'max: 2048'],
             'vat_num' => ['required', 'numeric', 'digits:11', 'unique:companies,vat_num'], // Assuming 'companies' is the table name
         ], [
             'name.max' => 'Il nome deve avere al massimo 255 caratteri.',
@@ -42,10 +42,27 @@ class CompanyController extends Controller
             'vat_num.unique' => 'La partita IVA è già stata registrata.',
         ]);
 
-        // Create a new Company instance and save the validated data
+        // Handle the file upload
+        if ($request->hasFile('logo')) {
+            // Store the uploaded file in the 'logos' directory within the 'public' disk
+            $logoPath = $request->file('logo')->store('logos', 'public');
+        }
+
+        // Create company instance
         $company = new Company();
+
+        // Store logo in the storage folder
+        if ($request->hasFile('logo')) {
+            // Store the file in the 'logos' folder and get the path
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            // Save the relative path of the file in the database
+            $company->logo = 'storage/' . $logoPath;
+        } else {
+            // If no file is uploaded, use a placeholder
+            $company->logo = 'https://placehold.co/600x600?text=Azienda';
+        }
+
         $company->name = $request->input('name');
-        $company->logo = $request->input('logo');
         $company->vat_num = $request->input('vat_num');
         $company->save();
 
@@ -83,7 +100,7 @@ class CompanyController extends Controller
         // Validate the incoming request
         $rules = [
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'logo' => ['required', 'string', 'min:3', 'max:255'],
+            'logo' => ['image', 'mimes:jpeg,png,jpg', 'max: 2048'],
             'vat_num' => ['required', 'numeric', 'digits:11', Rule::unique('companies')->ignore($company->id)],
         ];
 
@@ -92,8 +109,26 @@ class CompanyController extends Controller
             'vat_num.digits' => 'La partita IVA deve avere 11 numeri.',
             'vat_num.unique' => 'La partita IVA è già stata registrata.',
         ]);
-        // Update the company
-        $company->update($request->except('_method', '_token'));
+        
+        // Update company information
+        $company->name = $request->input('name');
+        $company->vat_num = $request->input('vat_num');
+
+        // Handle logo update
+        if ($request->hasFile('logo')) {
+            // Delete the old logo if it exists and is not a placeholder
+            $oldLogoPath = public_path('storage/logos/' . $company->logo);
+            if ($company->logo !== 'https://placehold.co/600x400' && file_exists($oldLogoPath)) {
+                unlink($oldLogoPath); // Remove old logo file
+            }
+
+            // Store the new logo
+            $logoPath = $request->file('logo')->store('logos', 'public');
+            $company->logo = 'storage/' . $logoPath; // Save the path in the database
+        }
+
+        // Save the updated company data
+        $company->save();
 
         // Redirect to the company's show page
         return redirect()->route('admin.companies.show', $company->id)->with('success', 'Azienda aggiornata con successo!');
