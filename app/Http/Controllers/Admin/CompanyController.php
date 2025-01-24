@@ -14,8 +14,14 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::all();
-        return view('admin.companies.index', ['companies' => $companies]);
+        // Get the sort order from the request, defaulting to 'desc' if not provided
+        $sortOrder = request('sort', 'desc');
+
+        // Fetch all companies, sorted by created_at based on the requested sort order
+        $companies = Company::orderBy('created_at', $sortOrder)->get();
+
+        // Return the view with the companies and sort order
+        return view('admin.companies.index', compact('companies', 'sortOrder'));
     }
 
     /**

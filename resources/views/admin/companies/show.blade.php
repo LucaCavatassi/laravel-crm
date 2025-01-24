@@ -104,9 +104,7 @@
                         </div>
                     </div>
                 @endforeach
-            @endif
-
-            
+            @endif      
         </div>
         {{-- Employee --}}
     </div>

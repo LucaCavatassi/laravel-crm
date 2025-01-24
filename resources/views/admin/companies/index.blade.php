@@ -5,8 +5,13 @@
         <div class="my-4 p-4">
             {{-- Info --}}
             <div class="d-flex justify-content-between">
-                <h1 class="mb-2">Tutte le aziende</h1>
-                <small class="opacity-75 align-self-center text-end">Clicca sul nome per vedere i dettagli dell'azienda</small>
+                <div class="mb-3">
+                    <h1 class="mb-2">Tutte le aziende</h1>
+                    <small class="opacity-75 text-end">Clicca sul nome per vedere i dettagli dell'azienda</small>
+                </div>
+                <a style="text-decoration: none" class="align-self-end mb-3" href="{{ route('admin.companies.index', ['sort' => $sortOrder === 'asc' ? 'desc' : 'asc']) }}">
+                    Ordina per data di creazione  {{ $sortOrder === 'asc' ? '↓' : '↑' }}
+                </a>
             </div>
             {{-- Info --}}
 
@@ -75,6 +80,5 @@
             </div>
             {{-- Index --}}
         </div>
-
     </div>
 @endsection
