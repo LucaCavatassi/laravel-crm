@@ -46,20 +46,4 @@
             </form>
         </div>
     </div>
-
-    <script>
-        function previewLogo(event) {
-            const preview = document.getElementById('logo-preview');
-            const file = event.target.files[0];
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-                preview.src = e.target.result; // Set the image preview source to the selected file
-            }
-
-            if (file) {
-                reader.readAsDataURL(file); // Read the file as a Data URL
-            }
-        }
-    </script>
 @endsection

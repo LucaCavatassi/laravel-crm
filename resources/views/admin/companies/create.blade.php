@@ -31,11 +31,15 @@
 
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
-                    <input class="form-control" type="file" name="logo" id="logo">
+                    <input class="form-control" type="file" name="logo" id="logo" onchange="previewLogo(event)">
                 </div>
 
-                <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-lg btn-primary">Aggiungi azienda</button>
+                <div class="d-flex justify-content-between mt-3">
+                    <div class="d-flex flex-column justify-content-center align-content-center">
+                        <p class="fw-bold opacity-75">Logo attuale</p>
+                        <img style="object-fit: cover" src="https://placehold.co/600x600?text=Azienda" alt="placeholder" width="150" height="150" class="rounded flex-shrink-0 align-self-center" id="logo-preview">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg h-50 align-self-end">Aggiungi azienda</button>
                 </div>
             </form>
         </div>
