@@ -28,32 +28,42 @@
     
         {{-- Employee --}}
         <div>
-            <h2>Lista dei dipendenti</h2>
+            <div class="d-flex justify-content-between align-content-center">
+                <h2>Lista dei dipendenti</h2>
+                <a style="text-decoration: none" href="{{ route('admin.companies.show', ['company' => $company->id, 'sort' => request('sort') === 'asc' ? 'desc' : 'asc']) }}" class="opacity-75 align-self-center m-0">
+                    Ordina per data di creazione  {{ request('sort') === 'asc' ? '↓' : '↑' }}
+                </a>
+            </div>
             @if($company->employees->isEmpty())
                 <p>Non ci sono dipendenti in questa azienda.</p>
             @else
                 @foreach($company->employees as $employee)
                     <div class="card mb-2">
                         <div class="card-body row justify-content-between align-items-center">
-                            <div class="col-9 px-0 px-md-4">
-                                <p class="mb-0">
-                                    <span>Nome - </span>
-                                    <span class="fw-bold">
-                                        {{ $employee->name }} {{ $employee->surname }}
-                                    </span>
-                                </p>
-                                <p class="mb-0">
-                                    <span>Email - </span>
-                                    <span class="fw-bold">
-                                        {{ $employee->email }}
-                                    </span>
-                                </p>
-                                <p class="mb-0">
-                                    <span>Telefono - </span>
-                                    <span class="fw-bold">
-                                        {{ $employee->phone }}
-                                    </span>  
-                                </p>
+                            <div class="col-9 px-0 px-md-4 d-flex justify-content-between">
+                                <div>
+                                    <p class="mb-0">
+                                        <span>Nome - </span>
+                                        <span class="fw-bold">
+                                            {{ $employee->name }} {{ $employee->surname }}
+                                        </span>
+                                    </p>
+                                    <p class="mb-0">
+                                        <span>Email - </span>
+                                        <span class="fw-bold">
+                                            {{ $employee->email }}
+                                        </span>
+                                    </p>
+                                    <p class="mb-0">
+                                        <span>Telefono - </span>
+                                        <span class="fw-bold">
+                                            {{ $employee->phone }}
+                                        </span>  
+                                    </p>
+                                </div>
+                                <div class="text-end opacity-75">
+                                    {{$employee->created_at->format('d/m/Y')}}
+                                </div>
                             </div>
                             <div class="col-3 d-flex flex-column flex-md-row justify-content-end gap-0 gap-md-3">
                                 <form id="edit-form" action="{{ route('admin.employees.edit', $employee->id) }}" method="GET">

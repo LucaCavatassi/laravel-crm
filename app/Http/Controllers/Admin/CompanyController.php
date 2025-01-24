@@ -58,16 +58,14 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
-        // $company = Company::with('employees')->findOrFail($company->id);
-        // EAGER LOADING WITH FOREIGN LOADED IN MODEL
-        // $company->load('employees'); 
+        $sortOrder = request('sort', 'desc'); // Default to 'desc' if not provided
 
-        $company->load(['employees' => function ($query) {
-            $query->orderBy('created_at', 'desc'); // Sorting by latest created
+        $company->load(['employees' => function ($query) use ($sortOrder) {
+            $query->orderBy('created_at', $sortOrder);
         }]);
+
         return view('admin.companies.show', compact('company'));
     }
-
     /**
      * Show the form for editing the specified resource.
      */
