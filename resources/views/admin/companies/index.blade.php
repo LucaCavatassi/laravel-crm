@@ -37,7 +37,7 @@
                         <form id="edit-form-{{ $company->id }}" action="{{ route('admin.companies.edit', $company->id) }}" method="GET">
                             @csrf
                         </form>
-                        <button class="btn btn-primary mb-2 mb-md-0" onclick="event.preventDefault(); document.getElementById('edit-form').submit();">
+                        <button class="btn btn-primary mb-2 mb-md-0" onclick="event.preventDefault(); document.getElementById('edit-form-{{ $company->id}}').submit();">
                             <span class="d-none d-md-inline">Modifica</span>
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
