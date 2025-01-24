@@ -66,27 +66,27 @@
                                 </div>
                             </div>
                             <div class="col-3 d-flex flex-column flex-md-row justify-content-end gap-0 gap-md-3">
-                                <form id="edit-form" action="{{ route('admin.employees.edit', $employee->id) }}" method="GET">
+                                <form id="edit-form-{{ $employee->id }}" action="{{ route('admin.employees.edit', $employee->id) }}" method="GET">
                                     @csrf
                                 </form>
-                                <button class="btn btn-primary mb-2 mb-md-0" onclick="event.preventDefault(); document.getElementById('edit-form').submit();">
+                                <button class="btn btn-primary mb-2 mb-md-0" onclick="event.preventDefault(); document.getElementById('edit-form-{{ $employee->id }}').submit();">
                                     <span class="d-none d-md-inline">Modifica</span>
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
-                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $employee->id }}">
                                     <span class="d-none d-md-inline">Elimina</span>
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModal" aria-hidden="true">
+                
+                    <!-- Unique Modal for Each Employee -->
+                    <div class="modal fade" id="deleteModal-{{ $employee->id }}" tabindex="-1" aria-labelledby="deleteModalLabel-{{ $employee->id }}" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Vuoi davvero eliminare questo dipendente?</h1>
+                                    <h1 class="modal-title fs-5" id="deleteModalLabel-{{ $employee->id }}">Vuoi davvero eliminare questo dipendente?</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">

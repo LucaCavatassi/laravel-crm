@@ -69,9 +69,9 @@ class CompanyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Company $company)
     {
-        //
+        return view('admin.companies.update', compact('company'));
     }
 
     /**
@@ -85,8 +85,10 @@ class CompanyController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Company $company)
     {
-        //
+        $company->delete();
+
+        return redirect()->route('admin.companies.index')->with('success', 'Dipendente eliminato con successo!');
     }
 }
