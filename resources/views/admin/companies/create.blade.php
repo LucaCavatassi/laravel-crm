@@ -26,12 +26,12 @@
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="vat_num">Partita Iva*</label>
-                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ old('name') }}" placeholder="Inserisci il numero di partita iva" minlength="11" maxlength="11" required>
+                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ old('vat_num') }}" placeholder="Inserisci il numero di partita iva" minlength="11" maxlength="11" required>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
-                    <input class="form-control" type="text" name="logo" id="logo" value="{{ old('name') }}" required>
+                    <input class="form-control" type="file" name="logo" id="logo" value="{{ old('logo') }}" required>
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">

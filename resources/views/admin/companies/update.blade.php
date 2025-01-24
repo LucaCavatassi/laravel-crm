@@ -23,19 +23,19 @@
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="name">Nome*</label>
-                    <input class="form-control" type="text" name="name" id="name" value="{{ $company->name }}" required>
-                </div>
-            
-                <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
-                    <input class="form-control" type="text" name="logo" id="logo" value="{{ $company->logo }}" required>
+                    <input class="form-control" type="text" name="name" id="name" value="{{ $company->name ?? old('name') }}" required>
                 </div>
             
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="vat_num">P.Iva*</label>
-                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ $company->vat_num }}" required>
+                    <input class="form-control" type="text" name="vat_num" id="vat_num" value="{{ $company->vat_num ?? old('vat_num') }}" required>
                 </div>
-        
+
+                <div class="mb-3">
+                    <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
+                    <input class="form-control" type="text" name="logo" id="logo" value="{{ $company->logo ?? old('logo') }}" required>
+                </div>
+            
                 <div class="d-flex justify-content-end mt-3">
                     <button type="submit" class="btn btn-primary btn-lg">Modifica</button>
                 </div>
