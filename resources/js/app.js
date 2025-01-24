@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 logoPreview.src = e.target.result; // Set the image source to the result of the FileReader
             }
 
-            reader.readAsDataURL(file); // Read the file as a data URL
+            reader.readAsDataURL(file); // Read the file as a data URL format that can be used directly in the browser
         }
     }
 });
