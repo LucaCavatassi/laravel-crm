@@ -43,17 +43,20 @@
                         <label class="form-label opacity-75 fw-bold" for="company_id">Azienda*</label>
                         <small class="opacity-75 text-end">Se l’azienda non esiste, crearla prima di aggiungere un dipendente.</small>
                     </div>
-                    <select class="form-select" name="company_id" id="company_id">
-                        @foreach ($companies as $company)
-                            <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
-                                {{ $company->name }}
-                            </option>
-                        @endforeach
-                    </select>
+                    <div class="d-flex gap-5">
+                        <select class="form-select w-75" name="company_id" id="company_id">
+                            @foreach ($companies as $company)
+                                <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
+                                    {{ $company->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <a href="{{ route('admin.companies.create')}}" class="btn btn-primary flex-grow-1">Crea Azienda</a>
+                    </div>
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Aggiungi dipendente</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Aggiungi dipendente</button>
                 </div>
             </form>
         </div>

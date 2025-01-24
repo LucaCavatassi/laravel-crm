@@ -37,11 +37,11 @@
                         <form id="edit-form-{{ $company->id }}" action="{{ route('admin.companies.edit', $company->id) }}" method="GET">
                             @csrf
                         </form>
-                        <button class="btn btn-primary mb-2 mb-md-0" onclick="event.preventDefault(); document.getElementById('edit-form-{{ $company->id}}').submit();">
+                        <button class="btn btn-primary mb-2 mb-md-0 h-50 align-self-center" onclick="event.preventDefault(); document.getElementById('edit-form-{{ $company->id}}').submit();">
                             <span class="d-none d-md-inline">Modifica</span>
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $company->id }}">
+                        <button class="btn btn-danger h-50 align-self-center" data-bs-toggle="modal" data-bs-target="#deleteModal-{{ $company->id }}">
                             <span class="d-none d-md-inline">Elimina</span>
                             <i class="fa-solid fa-trash"></i>
                         </button>

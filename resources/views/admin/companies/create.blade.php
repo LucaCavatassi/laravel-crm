@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Aggiungi azienda</button>
+                    <button type="submit" class="btn btn-lg btn-primary">Aggiungi azienda</button>
                 </div>
             </form>
         </div>

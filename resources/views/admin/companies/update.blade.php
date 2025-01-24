@@ -37,7 +37,7 @@
                 </div>
         
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Modifica</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Modifica</button>
                 </div>
             </form>
         </div>
