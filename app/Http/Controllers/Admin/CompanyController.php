@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CompanyController extends Controller
 {
@@ -37,7 +38,7 @@ class CompanyController extends Controller
             'vat_num' => ['required', 'numeric', 'digits:11', 'unique:companies,vat_num'], // Assuming 'companies' is the table name
         ], [
             'name.max' => 'Il nome deve avere al massimo 255 caratteri.',
-            'vat_num.digits:11' => 'La partita IVA deve avere 11 numeri.',
+            'vat_num.digits' => 'La partita IVA deve avere 11 numeri.',
             'vat_num.unique' => 'La partita IVA è già stata registrata.',
         ]);
 
@@ -77,9 +78,25 @@ class CompanyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Company $company)
     {
-        //
+        // Validate the incoming request
+        $rules = [
+            'name' => ['required', 'string', 'min:3', 'max:255'],
+            'logo' => ['required', 'string', 'min:3', 'max:255'],
+            'vat_num' => ['required', 'numeric', 'digits:11', Rule::unique('companies')->ignore($company->id)],
+        ];
+
+        $request->validate($rules, [
+            'name.max' => 'Il nome deve avere al massimo 255 caratteri.',
+            'vat_num.digits' => 'La partita IVA deve avere 11 numeri.',
+            'vat_num.unique' => 'La partita IVA è già stata registrata.',
+        ]);
+        // Update the company
+        $company->update($request->except('_method', '_token'));
+
+        // Redirect to the company's show page
+        return redirect()->route('admin.companies.show', $company->id)->with('success', 'Azienda aggiornata con successo!');
     }
 
     /**
