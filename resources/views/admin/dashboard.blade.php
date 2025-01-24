@@ -12,7 +12,7 @@
             <div class="mb-2">
                 <h1>Ecco i dati dei tuoi clienti</h1>
             </div>
-            <div id="chart_div" style="width: 100%; height: 500px;"></div>
+            <div id="chart_div" style="width: 100%; height: 600px;"></div>
 
             
             <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -20,17 +20,17 @@
                 google.charts.load('current', {packages: ['corechart', 'bar']});
                 google.charts.setOnLoadCallback(drawChart);
             
-                var chart; // Declare chart variable outside drawChart
+                let chart; // Declare chart variable outside drawChart
             
                 function drawChart() {
-                    var data = google.visualization.arrayToDataTable([
+                    let data = google.visualization.arrayToDataTable([
                         ['Category', 'Value'],
                         ['Numero totale di aziende', {{ $totalCompanies }}],
                         ['Numero totale di dipendenti', {{ $totalEmployees }}],
                         ['Azienda con più dipendenti: ' + '{{ $largestCompanyName }}', {{ $largestCompanyEmployees->employees_count }}]
                     ]);
             
-                    var options = {
+                    let options = {
                         title: 'Overview clienti',
                         chartArea: {width: '50%'},
                         hAxis: {
