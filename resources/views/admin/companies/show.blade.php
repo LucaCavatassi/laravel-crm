@@ -8,7 +8,7 @@
         </div>
     @endif
     
-    <div class="mb-5">
+    <div class="my-4 p-4">
         {{-- Info company --}}
         <div class="d-flex justify-content-start gap-4 align-items-center my-4">
             <img class="rounded-circle flex-shrink-0" src="{{ $company->logo }}" alt="{{ $company->name }}" width="100" height="100">

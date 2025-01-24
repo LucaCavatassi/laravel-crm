@@ -11,33 +11,38 @@
                     </div>
                 @endforeach
             @endif
-    
-            <h1 class="mb-3">Crea dipendente</h1>
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="mb-3">Crea dipendente</h1>
+                <small class="opacity-75 text-end">I campi con l'asterisco (*) sono obbligatori.</small>
+            </div>
             <form action="{{ route('admin.employees.store')}}" method="POST">
                 @csrf
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="name">Nome</label>
+                    <label class="form-label opacity-75 fw-bold" for="name">Nome*</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{ old('name') }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="surname">Cognome</label>
+                    <label class="form-label opacity-75 fw-bold" for="surname">Cognome*</label>
                     <input class="form-control" type="text" name="surname" id="surname" value="{{ old('surname') }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="email">Email</label>
+                    <label class="form-label opacity-75 fw-bold" for="email">Email*</label>
                     <input class="form-control" type="email" name="email" id="email" value="{{ old('email') }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="phone">Telefono</label>
+                    <label class="form-label opacity-75 fw-bold" for="phone">Telefono*</label>
                     <input class="form-control" type="tel" name="phone" id="phone" value="{{ old('phone') }}" required>
                 </div>
-            
+
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="company_id">Azienda</label>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <label class="form-label opacity-75 fw-bold" for="company_id">Azienda*</label>
+                        <small class="opacity-75 text-end">Se l’azienda non esiste, crearla prima di aggiungere un dipendente.</small>
+                    </div>
                     <select class="form-select" name="company_id" id="company_id">
                         @foreach ($companies as $company)
                             <option value="{{ $company->id }}" {{ old('company_id') == $company->id ? 'selected' : '' }}>
@@ -46,9 +51,9 @@
                         @endforeach
                     </select>
                 </div>
-            
+
                 <div class="d-flex justify-content-end mt-3">
-                    <button type="submit" class="btn btn-primary">Crea</button>
+                    <button type="submit" class="btn btn-primary">Aggiungi dipendente</button>
                 </div>
             </form>
         </div>

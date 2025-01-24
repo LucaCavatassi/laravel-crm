@@ -12,33 +12,36 @@
                 @endforeach
             @endif
     
-            <h1 class="mb-3">Modifica i dati del dipendente</h1>
+            <div class="d-flex align-items-center justify-content-between">
+                <h1 class="mb-3">Modifica i dati del dipendente</h1>
+                <small class="opacity-75 text-end">I campi con l'asterisco (*) sono obbligatori.</small>
+            </div>
             <form action="{{ route('admin.employees.update', $employee->id) }}" method="POST">
                 @method('PUT')
                 @csrf
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="name">Nome</label>
+                    <label class="form-label opacity-75 fw-bold" for="name">Nome*</label>
                     <input class="form-control" type="text" name="name" id="name" value="{{ $employee->name }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="surname">Cognome</label>
+                    <label class="form-label opacity-75 fw-bold" for="surname">Cognome*</label>
                     <input class="form-control" type="text" name="surname" id="surname" value="{{ $employee->surname }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="email">Email</label>
+                    <label class="form-label opacity-75 fw-bold" for="email">Email*</label>
                     <input class="form-control" type="email" name="email" id="email" value="{{ $employee->email }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="phone">Telefono</label>
+                    <label class="form-label opacity-75 fw-bold" for="phone">Telefono*</label>
                     <input class="form-control" type="tel" name="phone" id="phone" value="{{ $employee->phone }}" required>
                 </div>
             
                 <div class="mb-3">
-                    <label class="form-label opacity-75 fw-bold" for="company_id">Azienda</label>
+                    <label class="form-label opacity-75 fw-bold" for="company_id">Azienda*</label>
                     <select class="form-select" name="company_id" id="company_id">
                         @foreach ($companies as $company)
                             <option value="{{ $company->id }}" {{ $company->id == $employee->company_id ? 'selected' : '' }}>

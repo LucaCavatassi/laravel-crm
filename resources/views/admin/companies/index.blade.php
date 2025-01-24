@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="my-5 px-4">
+        <div class="my-4 p-4">
             {{-- Info --}}
             <div class="d-flex justify-content-between">
                 <h1 class="mb-2">Tutte le aziende</h1>
