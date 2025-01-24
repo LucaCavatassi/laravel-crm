@@ -33,17 +33,33 @@
 
                 <div class="mb-3">
                     <label class="form-label opacity-75 fw-bold" for="logo">Logo*</label>
-                    <input class="form-control" type="file" name="logo" id="logo">
+                    <input class="form-control" type="file" name="logo" id="logo" onchange="previewLogo(event)">
                 </div>            
             
                 <div class="d-flex justify-content-between mt-3">
                     <div class="d-flex flex-column justify-content-center align-content-center">
                         <p class="fw-bold opacity-75">Logo attuale</p>
-                        <img src="{{ asset($company->logo) }}" alt="{{ $company->name }}" width="150" height="150" class="rounded flex-shrink-0 align-self-center">
+                        <img style="object-fit: cover" src="{{ asset($company->logo) }}" alt="{{ $company->name }}" width="150" height="150" class="rounded flex-shrink-0 align-self-center" id="logo-preview">
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg h-50 align-self-end">Modifica</button>
                 </div>
             </form>
         </div>
     </div>
+
+    <script>
+        function previewLogo(event) {
+            const preview = document.getElementById('logo-preview');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                preview.src = e.target.result; // Set the image preview source to the selected file
+            }
+
+            if (file) {
+                reader.readAsDataURL(file); // Read the file as a Data URL
+            }
+        }
+    </script>
 @endsection

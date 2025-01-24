@@ -23,7 +23,7 @@
                     <div>
                         <a style="text-decoration: none" href="{{ route('admin.companies.show', $company->id) }}" class="d-flex gap-3 py-3 text-black" aria-current="true">
                             {{-- Logo --}}
-                            <img src="{{ asset($company->logo) }}" alt="{{ $company->name }}" width="50" height="50" class="rounded-circle flex-shrink-0 align-self-center">
+                            <img style="object-fit: cover" src="{{ asset($company->logo) }}" alt="{{ $company->name }}" width="50" height="50" class="rounded-circle flex-shrink-0 align-self-center">
                             {{-- Logo --}}
                             {{-- Info --}}
                             <div class="d-flex gap-2 w-100 justify-content-between">
