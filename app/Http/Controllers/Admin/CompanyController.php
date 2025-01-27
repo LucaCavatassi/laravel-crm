@@ -14,7 +14,7 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        // Get the sort order from the request, defaulting to 'desc' if not provided
+        // Get the sort order from the request
         $sortOrder = request('sort', 'desc');
 
         // Fetch all companies, sorted by created_at based on the requested sort order
@@ -40,19 +40,13 @@ class CompanyController extends Controller
         // Validate the incoming request
         $request->validate([
             'name' => ['required', 'string', 'min:3', 'max:255'],
-            'logo' => ['image', 'mimes:jpeg,png,jpg', 'max: 2048'],
+            'logo' => ['image', 'mimes:jpeg,png,jpg', 'max:2048'],
             'vat_num' => ['required', 'numeric', 'digits:11', 'unique:companies,vat_num'], // Assuming 'companies' is the table name
         ], [
             'name.max' => 'Il nome deve avere al massimo 255 caratteri.',
             'vat_num.digits' => 'La partita IVA deve avere 11 numeri.',
             'vat_num.unique' => 'La partita IVA è già stata registrata.',
         ]);
-
-        // Handle the file upload
-        if ($request->hasFile('logo')) {
-            // Store the uploaded file in the 'logos' directory within the 'public' disk
-            $logoPath = $request->file('logo')->store('logos', 'public');
-        }
 
         // Create company instance
         $company = new Company();
@@ -72,7 +66,7 @@ class CompanyController extends Controller
         $company->vat_num = $request->input('vat_num');
         $company->save();
 
-        // Redirect to a page (e.g., the company list or the newly created company)
+        // Redirect to index
         return redirect()->route('admin.companies.index')->with('success', 'Azienda creata con successo!');
     }
 
